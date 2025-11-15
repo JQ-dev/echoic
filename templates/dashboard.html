@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - ECHOIC{% endblock %}
+
+{% block content %}
+<div class="dashboard">
+    <div class="dashboard-header">
+        <h1>My Songs</h1>
+        <a href="{{ url_for('upload_song') }}" class="btn btn-primary">+ Upload New Song</a>
+    </div>
+
+    {% if songs %}
+        <div class="songs-grid">
+            {% for song in songs %}
+                <div class="song-card">
+                    <div class="song-header">
+                        <h3>{{ song.title }}</h3>
+                        {% if song.artist %}
+                            <p class="artist">by {{ song.artist }}</p>
+                        {% endif %}
+                    </div>
+
+                    <div class="song-info">
+                        <span class="language-badge">{{ song.language }}</span>
+                        <span class="date">{{ song.uploaded_at.strftime('%b %d, %Y') }}</span>
+                    </div>
+
+                    {% if song.lyrics %}
+                        <div class="lyrics-preview">
+                            {{ song.lyrics[:100] }}{% if song.lyrics|length > 100 %}...{% endif %}
+                        </div>
+                    {% endif %}
+
+                    <div class="song-stats">
+                        {% set attempt_count = song.attempts|length %}
+                        <span>📊 {{ attempt_count }} practice{{ 's' if attempt_count != 1 else '' }} session{{ 's' if attempt_count != 1 else '' }}</span>
+                    </div>
+
+                    <div class="song-actions">
+                        <a href="{{ url_for('view_song', song_id=song.id) }}" class="btn btn-secondary">Practice</a>
+                        <form method="POST" action="{{ url_for('delete_song', song_id=song.id) }}" style="display: inline;" onsubmit="return confirm('Are you sure you want to delete this song?');">
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="empty-state">
+            <h2>No songs yet</h2>
+            <p>Upload your first song to start practicing pronunciation!</p>
+            <a href="{{ url_for('upload_song') }}" class="btn btn-primary">Upload Song</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+
+{% block title %}Practice - {{ song.title }} - ECHOIC{% endblock %}
+
+{% block content %}
+<div class="practice-container">
+    <div class="practice-header">
+        <a href="{{ url_for('dashboard') }}" class="back-link">← Back to Dashboard</a>
+        <h1>{{ song.title }}</h1>
+        {% if song.artist %}
+            <p class="artist">by {{ song.artist }}</p>
+        {% endif %}
+    </div>
+
+    <div class="practice-layout">
+        <!-- Audio Player Section -->
+        {% if song.audio_filename %}
+            <div class="audio-player-section">
+                <h3>Original Song</h3>
+                <audio controls id="songAudio" class="audio-player">
+                    <source src="{{ url_for('uploaded_file', filename=song.audio_filename) }}" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+        {% endif %}
+
+        <!-- Lyrics Practice Section -->
+        <div class="lyrics-section">
+            <h3>Practice Pronunciation</h3>
+            <p class="instructions">Click on a line to practice its pronunciation</p>
+
+            <div class="lyrics-container">
+                {% set lyrics_lines = song.get_lyrics_lines() %}
+                {% for line in lyrics_lines %}
+                    <div class="lyric-line" data-line-number="{{ loop.index0 }}" data-text="{{ line }}">
+                        <span class="line-number">{{ loop.index }}</span>
+                        <span class="line-text">{{ line }}</span>
+                        <button class="practice-btn" onclick="selectLine({{ loop.index0 }}, '{{ line|replace("'", "\\'") }}')">Practice</button>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Recording Section -->
+        <div class="recording-section">
+            <h3>Record Your Pronunciation</h3>
+
+            <div id="selectedLine" class="selected-line">
+                <p>Select a line to practice</p>
+            </div>
+
+            <div class="recording-controls">
+                <button id="recordBtn" class="btn btn-record" onclick="startRecording()" disabled>
+                    🎤 Start Recording
+                </button>
+                <button id="stopBtn" class="btn btn-stop" onclick="stopRecording()" disabled>
+                    ⏹️ Stop Recording
+                </button>
+                <button id="playbackBtn" class="btn btn-secondary" onclick="playRecording()" disabled>
+                    ▶️ Play Recording
+                </button>
+            </div>
+
+            <div id="recordingStatus" class="recording-status"></div>
+
+            <audio id="recordedAudio" style="display: none;"></audio>
+
+            <div id="evaluationResult" class="evaluation-result" style="display: none;">
+                <h4>Evaluation Result</h4>
+                <div class="score-display">
+                    <span class="score-label">Score:</span>
+                    <span id="scoreValue" class="score-value">-</span>
+                </div>
+                <div class="transcription">
+                    <strong>What you said:</strong>
+                    <p id="transcriptionText">-</p>
+                </div>
+                <div class="feedback">
+                    <strong>Feedback:</strong>
+                    <p id="feedbackText">-</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Previous Attempts -->
+        {% if attempts %}
+            <div class="attempts-section">
+                <h3>Recent Attempts</h3>
+                <div class="attempts-list">
+                    {% for attempt in attempts[:5] %}
+                        <div class="attempt-card">
+                            <div class="attempt-header">
+                                <span class="attempt-line">Line {{ attempt.line_number + 1 }}</span>
+                                <span class="attempt-score score-{{ 'excellent' if attempt.score >= 90 else 'good' if attempt.score >= 75 else 'fair' if attempt.score >= 60 else 'poor' }}">
+                                    {{ attempt.score }}%
+                                </span>
+                            </div>
+                            <div class="attempt-text">{{ attempt.expected_text }}</div>
+                            <div class="attempt-date">{{ attempt.timestamp.strftime('%b %d, %Y at %I:%M %p') }}</div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/recorder.js') }}"></script>
+<script>
+    const SONG_ID = {{ song.id }};
+    const SONG_LANGUAGE = "{{ song.language }}";
+</script>
+{% endblock %}
