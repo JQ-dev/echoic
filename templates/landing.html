@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECHOIC - Master Pronunciation Through Music</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/landing.css') }}">
+</head>
+<body class="landing-body">
+    <!-- Navigation -->
+    <nav class="landing-nav">
+        <div class="nav-container">
+            <a href="{{ url_for('index') }}" class="nav-brand">
+                <span class="brand-icon">🎵</span>
+                <span class="brand-text">ECHOIC</span>
+            </a>
+            <div class="nav-menu">
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#how-it-works" class="nav-link">How It Works</a>
+                <a href="#languages" class="nav-link">Languages</a>
+                <a href="{{ url_for('login') }}" class="btn btn-outline">Login</a>
+                <a href="{{ url_for('register') }}" class="btn btn-primary">Get Started</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">
+                    Master Pronunciation
+                    <span class="gradient-text">Through Music</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Learn languages the fun way! Upload your favorite songs, practice pronunciation,
+                    and get instant AI-powered feedback on your speaking skills.
+                </p>
+                <div class="hero-buttons">
+                    <a href="{{ url_for('register') }}" class="btn btn-large btn-primary">
+                        Start Learning Free
+                        <span class="btn-icon">→</span>
+                    </a>
+                    <a href="#how-it-works" class="btn btn-large btn-outline-light">
+                        See How It Works
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">12+</span>
+                        <span class="stat-label">Languages</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">AI-Powered</span>
+                        <span class="stat-label">Recognition</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Free to Use</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="floating-card card-1">
+                    <div class="card-header">
+                        <span class="card-icon">🎤</span>
+                        <span class="card-title">Record</span>
+                    </div>
+                    <div class="waveform">
+                        <span class="wave"></span>
+                        <span class="wave"></span>
+                        <span class="wave"></span>
+                        <span class="wave"></span>
+                        <span class="wave"></span>
+                    </div>
+                </div>
+                <div class="floating-card card-2">
+                    <div class="card-header">
+                        <span class="card-icon">✓</span>
+                        <span class="card-title">Score</span>
+                    </div>
+                    <div class="score-display">
+                        <span class="score-big">95%</span>
+                        <span class="score-label">Excellent!</span>
+                    </div>
+                </div>
+                <div class="floating-card card-3">
+                    <div class="card-header">
+                        <span class="card-icon">🎵</span>
+                        <span class="card-title">Practice</span>
+                    </div>
+                    <div class="lyrics-lines">
+                        <div class="lyric-line">Yesterday, all my troubles...</div>
+                        <div class="lyric-line active">Seemed so far away...</div>
+                        <div class="lyric-line">Now it looks as though...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="section-container">
+            <h2 class="section-title">Everything You Need to Learn</h2>
+            <p class="section-subtitle">Powerful features to accelerate your language learning journey</p>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🎤</div>
+                    <h3 class="feature-title">Voice Recording</h3>
+                    <p class="feature-description">
+                        Record your pronunciation directly in your browser. No downloads, no setup required.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3 class="feature-title">AI Recognition</h3>
+                    <p class="feature-description">
+                        Advanced speech-to-text technology analyzes your pronunciation with precision.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3 class="feature-title">Instant Feedback</h3>
+                    <p class="feature-description">
+                        Get detailed scores and feedback immediately. Know exactly what to improve.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🎵</div>
+                    <h3 class="feature-title">Your Music</h3>
+                    <p class="feature-description">
+                        Upload your favorite songs and learn with music you actually enjoy listening to.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h3 class="feature-title">12+ Languages</h3>
+                    <p class="feature-description">
+                        Practice in English, Spanish, French, German, Japanese, Korean, and more.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📈</div>
+                    <h3 class="feature-title">Track Progress</h3>
+                    <p class="feature-description">
+                        Monitor your improvement over time with detailed practice history and analytics.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="section-container">
+            <h2 class="section-title">How It Works</h2>
+            <p class="section-subtitle">Start improving your pronunciation in 3 simple steps</p>
+
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Upload Your Song</h3>
+                        <p class="step-description">
+                            Choose your favorite song and upload it along with the lyrics.
+                            Support for MP3, WAV, and more formats.
+                        </p>
+                    </div>
+                    <div class="step-visual">
+                        <div class="upload-mockup">
+                            <div class="mockup-header">Upload Song</div>
+                            <div class="mockup-body">
+                                <div class="mockup-input">Title: Yesterday</div>
+                                <div class="mockup-input">Artist: The Beatles</div>
+                                <div class="mockup-file">🎵 yesterday.mp3</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step step-reverse">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Practice & Record</h3>
+                        <p class="step-description">
+                            Select any line from the lyrics and record yourself singing or speaking it.
+                            Our AI listens carefully to your pronunciation.
+                        </p>
+                    </div>
+                    <div class="step-visual">
+                        <div class="record-mockup">
+                            <div class="mockup-lyric">Yesterday, all my troubles seemed so far away</div>
+                            <div class="mockup-controls">
+                                <button class="mockup-btn recording">🎤 Recording...</button>
+                            </div>
+                            <div class="mockup-waveform">
+                                <span></span><span></span><span></span><span></span>
+                                <span></span><span></span><span></span><span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3 class="step-title">Get Instant Feedback</h3>
+                        <p class="step-description">
+                            Receive a detailed score and personalized feedback. See what you said,
+                            how it compares, and tips to improve.
+                        </p>
+                    </div>
+                    <div class="step-visual">
+                        <div class="feedback-mockup">
+                            <div class="mockup-score excellent">
+                                <span class="score-value">92%</span>
+                                <span class="score-badge">Excellent!</span>
+                            </div>
+                            <div class="mockup-feedback">
+                                <div class="feedback-line">
+                                    <strong>Expected:</strong> Yesterday, all my troubles...
+                                </div>
+                                <div class="feedback-line">
+                                    <strong>You said:</strong> Yesterday, all my troubles...
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Languages Section -->
+    <section id="languages" class="languages">
+        <div class="section-container">
+            <h2 class="section-title">Practice in Multiple Languages</h2>
+            <p class="section-subtitle">Choose from our growing list of supported languages</p>
+
+            <div class="languages-grid">
+                <div class="language-card">
+                    <span class="language-flag">🇺🇸</span>
+                    <span class="language-name">English</span>
+                </div>
+                <div class="language-card">
+                    <span class="language-flag">🇪🇸</span>
+                    <span class="language-name">Spanish</span>
+                </div>
+                <div class="language-card">
+                    <span class="language-flag">🇫🇷</span>
+                    <span class="language-name">French</span>
+                </div>
+                <div class="language-card">
+                    <span class="language-flag">🇩🇪</span>
+                    <span class="language-name">German</span>
+                </div>
+                <div class="language-card">
+                    <span class="language-flag">🇮🇹</span>
+                    <span class="language-name">Italian</span>
+                </div>
+                <div class="language-card">
+                    <span class="language-flag">🇧🇷</span>
+                    <span class="language-name">Portuguese</span>
+                </div>
+                <div class="language-card">
+                    <span class="language-flag">🇯🇵</span>
+                    <span class="language-name">Japanese</span>
+                </div>
+                <div class="language-card">
+                    <span class="language-flag">🇰🇷</span>
+                    <span class="language-name">Korean</span>
+                </div>
+                <div class="language-card">
+                    <span class="language-flag">🇨🇳</span>
+                    <span class="language-name">Chinese</span>
+                </div>
+                <div class="language-card">
+                    <span class="language-flag">🇷🇺</span>
+                    <span class="language-name">Russian</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="cta-content">
+            <h2 class="cta-title">Ready to Start Your Journey?</h2>
+            <p class="cta-subtitle">Join today and transform the way you learn languages</p>
+            <div class="cta-buttons">
+                <a href="{{ url_for('register') }}" class="btn btn-large btn-primary">
+                    Create Free Account
+                </a>
+                <p class="cta-note">No credit card required • Takes 30 seconds</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="landing-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span class="brand-icon">🎵</span>
+                <span class="brand-text">ECHOIC</span>
+            </div>
+            <p class="footer-tagline">Master pronunciation through music</p>
+            <div class="footer-links">
+                <a href="{{ url_for('login') }}">Login</a>
+                <a href="{{ url_for('register') }}">Register</a>
+                <a href="#features">Features</a>
+                <a href="#how-it-works">How It Works</a>
+            </div>
+            <p class="footer-copyright">&copy; 2025 ECHOIC - Pronunciation Practice Platform</p>
+        </div>
+    </footer>
+</body>
+</html>

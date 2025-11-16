@@ -2,29 +2,118 @@
 
 {% block title %}Login - ECHOIC{% endblock %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
+{% endblock %}
+
 {% block content %}
-<div class="auth-container">
-    <div class="auth-card">
-        <h1>Welcome Back!</h1>
-        <p class="subtitle">Login to continue your pronunciation practice</p>
-
-        <form method="POST" action="{{ url_for('login') }}" class="auth-form">
-            <div class="form-group">
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username" required autofocus>
+<div class="auth-page">
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-brand">
+                <span class="brand-icon">🎵</span>
+                <span class="brand-text">ECHOIC</span>
             </div>
 
-            <div class="form-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" required>
+            <h1 class="auth-title">Welcome Back!</h1>
+            <p class="auth-subtitle">Login to continue your pronunciation practice</p>
+
+            <form method="POST" action="{{ url_for('login') }}" class="auth-form" autocomplete="on">
+                <div class="form-group">
+                    <label for="username">
+                        <span class="label-icon">👤</span>
+                        Username
+                    </label>
+                    <input
+                        type="text"
+                        id="username"
+                        name="username"
+                        required
+                        autofocus
+                        autocomplete="username"
+                        placeholder="Enter your username"
+                        class="form-input"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="password">
+                        <span class="label-icon">🔒</span>
+                        Password
+                    </label>
+                    <div class="password-input-wrapper">
+                        <input
+                            type="password"
+                            id="password"
+                            name="password"
+                            required
+                            autocomplete="current-password"
+                            placeholder="Enter your password"
+                            class="form-input"
+                        >
+                        <button type="button" class="password-toggle" onclick="togglePassword('password')">
+                            <span id="password-icon">👁️</span>
+                        </button>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block btn-submit">
+                    <span>Login</span>
+                    <span class="btn-arrow">→</span>
+                </button>
+            </form>
+
+            <div class="auth-divider">
+                <span>or</span>
             </div>
 
-            <button type="submit" class="btn btn-primary btn-block">Login</button>
-        </form>
+            <div class="auth-footer">
+                <p>Don't have an account? <a href="{{ url_for('register') }}" class="auth-link">Create one now</a></p>
+                <p class="auth-back"><a href="{{ url_for('index') }}">← Back to home</a></p>
+            </div>
+        </div>
 
-        <div class="auth-footer">
-            <p>Don't have an account? <a href="{{ url_for('register') }}">Register here</a></p>
+        <div class="auth-features">
+            <h3>Why ECHOIC?</h3>
+            <div class="feature-list">
+                <div class="feature-item">
+                    <span class="feature-icon">🎤</span>
+                    <div>
+                        <strong>Voice Recording</strong>
+                        <p>Practice with real-time audio recording</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">🤖</span>
+                    <div>
+                        <strong>AI Feedback</strong>
+                        <p>Get instant pronunciation scoring</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">🎵</span>
+                    <div>
+                        <strong>Learn with Music</strong>
+                        <p>Use your favorite songs to learn</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+
+<script>
+function togglePassword(inputId) {
+    const input = document.getElementById(inputId);
+    const icon = document.getElementById(inputId + '-icon');
+
+    if (input.type === 'password') {
+        input.type = 'text';
+        icon.textContent = '🙈';
+    } else {
+        input.type = 'password';
+        icon.textContent = '👁️';
+    }
+}
+</script>
 {% endblock %}

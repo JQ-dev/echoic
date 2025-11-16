@@ -44,10 +44,10 @@ os.makedirs(app.config['RECORDINGS_FOLDER'], exist_ok=True)
 
 @app.route('/')
 def index():
-    """Home page"""
+    """Landing page"""
     if current_user.is_authenticated:
         return redirect(url_for('dashboard'))
-    return redirect(url_for('login'))
+    return render_template('landing.html')
 
 
 @app.route('/register', methods=['GET', 'POST'])
