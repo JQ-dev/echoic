@@ -1,12 +1,12 @@
 {
-    "name": "lenski",
-    "short_name": "lenski",
+    "name": "LenSki - Language Learning",
+    "short_name": "LenSki",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
-    "orientation": "portrait-primary",
+    "background_color": "#5271FF",
+    "theme_color": "#5271FF",
+    "description": "Master any language with LenSki - your autonomous language learning companion featuring interactive exercises, spaced repetition, and AI-powered translations.",
+    "orientation": "any",
     "prefer_related_applications": false,
     "icons": [
         {
